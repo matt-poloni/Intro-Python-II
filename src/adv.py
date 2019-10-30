@@ -53,22 +53,34 @@ p = Player(name, room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-cmd = ""
-while cmd not in ["q", "quit"]:
+cmd0 = ""
+quitter = ["q", "quit"]
+while cmd0 not in quitter:
+    # Print current room & description
     curr = p.current_room
     print(f"\n{curr}\n")
+    # Dictionary of directions mapping single letter to word
     dirs = {
       'n': 'north',
       's': 'south',
       'e': 'east',
       'w': 'west'
     }
-    cmd = input("Command: ").lower().strip()
+
+    # Take user command and split into two parts
+    cmd = input("Command: ").lower().strip().split(' ')
+    cmd0 = cmd[0]
+    try:
+        cmd1 = cmd[1]
+    except:
+        cmd1 = "*"
     
-    if cmd in [*dirs.keys(), *dirs.values()]:
-        d = cmd[0]
+    if cmd0 in [*dirs.keys(), *dirs.values()]:
+        d = cmd0[0]
         dir = dirs[d]
         if (to := getattr(curr, f"{d}_to")) != None:
             p.current_room = to
         else:
             print(f"ERROR: You cannot travel {dir}. Try again.")
+    elif cmd0 not in quitter:
+        print(f"ERROR: '{cmd0}' is not a recognized command. Try again.")
