@@ -64,7 +64,7 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
   - [x] The `Room` class should be extended with a `list` that holds the `Item`s
     that are currently in that room.
 
-  - [ ] Add functionality to the main loop that prints out all the items that are
+  - [x] Add functionality to the main loop that prints out all the items that are
     visible to the player when they are in that room.
 
 - [x] Add capability to add `Item`s to the player's inventory. The inventory can
