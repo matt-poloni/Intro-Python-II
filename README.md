@@ -50,24 +50,24 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
   - [x] Players should have a `name` and `current_room` attributes
 
 
-- [ ] Create a file called `item.py` and add an `Item` class in there.
+- [x] Create a file called `item.py` and add an `Item` class in there.
 
-  - [ ] The item should have `name` and `description` attributes.
+  - [x] The item should have `name` and `description` attributes.
 
-     - [ ] Hint: the name should be one word for ease in parsing later.
+     * Hint: the name should be one word for ease in parsing later.
 
-  - [ ] This will be the _base class_ for specialized item types to be declared
+  * This will be the _base class_ for specialized item types to be declared
     later.
 
-- [ ] Add the ability to add items to rooms.
+- [x] Add the ability to add items to rooms.
 
-  - [ ] The `Room` class should be extended with a `list` that holds the `Item`s
+  - [x] The `Room` class should be extended with a `list` that holds the `Item`s
     that are currently in that room.
 
   - [ ] Add functionality to the main loop that prints out all the items that are
     visible to the player when they are in that room.
 
-- [ ] Add capability to add `Item`s to the player's inventory. The inventory can
+- [x] Add capability to add `Item`s to the player's inventory. The inventory can
   also be a `list` of items "in" the player, similar to how `Item`s can be in a
   `Room`.
 
