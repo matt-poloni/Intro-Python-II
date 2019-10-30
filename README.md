@@ -139,8 +139,8 @@ In arbitrary order:
   is in the room.
 
   - [ ] Modify the main loop to test if there is light in the `Room` (i.e. if
-    `is_light` is `True` **or*- [ ] there is a `LightSource` item in the `Room`'s
-    contents **or*- [ ] if there is a `LightSource` item in the `Player`'s contents).
+    `is_light` is `True` **or** there is a `LightSource` item in the `Room`'s
+    contents **or** if there is a `LightSource` item in the `Player`'s contents).
 
   - [ ] If there is light in the room, display name, description, and contents as
     normal.
