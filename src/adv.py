@@ -42,7 +42,6 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 name = input("What is your name? ")
 p = Player(name, room['outside'])
-print(p.current_room)
 
 # Write a loop that:
 #
@@ -54,19 +53,22 @@ print(p.current_room)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-while (cmd := input("Command: ").lower().strip()) not in ["q", "quit"]:
+cmd = ""
+while cmd not in ["q", "quit"]:
     curr = p.current_room
+    print(f"\n{curr}\n")
     dirs = {
       'n': 'north',
       's': 'south',
       'e': 'east',
       'w': 'west'
     }
+    cmd = input("Command: ").lower().strip()
+    
     if cmd in [*dirs.keys(), *dirs.values()]:
         d = cmd[0]
         dir = dirs[d]
-        if (to := getattr(curr, f'{d}_to')) != None:
+        if (to := getattr(curr, f"{d}_to")) != None:
             p.current_room = to
         else:
             print(f"ERROR: You cannot travel {dir}. Try again.")
-    print(p.current_room)
