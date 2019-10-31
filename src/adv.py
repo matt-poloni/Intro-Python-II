@@ -46,12 +46,9 @@ p = Player(name, room['outside'])
 cmd0 = ""
 while cmd0 not in cmds["quit"]:
     # Print current room & description
-    cur = p.current_room
-    print(f"\n{cur}\n")
+    print(f"\n{p.current_room}\n")
 
     # Take command from user
     cmd = input("Command: ")
     # Update primary command and current room
-    cmd0, p.current_room = parse(cmd, cur)
-    
-    
+    cmd0, p = parse(cmd, p)

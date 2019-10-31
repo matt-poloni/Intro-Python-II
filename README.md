@@ -24,10 +24,10 @@ Up to this point, you've gotten your feet wet by working on a bunch of small Pyt
 
 ### Day 2 MVP
 
-- [ ] Make rooms able to hold multiple items
-- [ ] Make the player able to carry multiple items
+- [x] Make rooms able to hold multiple items
+- [x] Make the player able to carry multiple items
 - [ ] Add items to the game that the user can carry around
-- [ ] Add `get [ITEM_NAME]` and `drop [ITEM_NAME]` commands to the parser
+- [x] Add `get [ITEM_NAME]` and `drop [ITEM_NAME]` commands to the parser
 
 ## Specification
 
@@ -54,9 +54,9 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
 
   - [x] The item should have `name` and `description` attributes.
 
-     * Hint: the name should be one word for ease in parsing later.
+      - [x] Hint: the name should be one word for ease in parsing later.
 
-  * This will be the _base class_ for specialized item types to be declared
+  - [x] This will be the _base class_ for specialized item types to be declared
     later.
 
 - [x] Add the ability to add items to rooms.
@@ -88,28 +88,28 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
   - [x] Split the entered command and see if it has 1 or 2 words in it to determine
     if it's the first or second form.
 
-- [ ] Implement support for the verb `get` followed by an `Item` name. This will be
+- [x] Implement support for the verb `get` followed by an `Item` name. This will be
   used to pick up `Item`s.
 
-  - [ ] If the user enters `get` or `take` followed by an `Item` name, look at the
+  - [x] If the user enters `get` or `take` followed by an `Item` name, look at the
     contents of the current `Room` to see if the item is there.
 
-     - [ ] If it is there, remove it from the `Room` contents, and add it to the
+     - [x] If it is there, remove it from the `Room` contents, and add it to the
        `Player` contents.
 
-     - [ ] If it's not there, print an error message telling the user so.
+     - [x] If it's not there, print an error message telling the user so.
 
-     - [ ] Add an `on_take` method to `Item`.
+     - [x] Add an `on_take` method to `Item`.
 
-        - [ ] Call this method when the `Item` is picked up by the player.
+        - [x] Call this method when the `Item` is picked up by the player.
 
-        - [ ] `on_take` should print out "You have picked up [NAME]" when you pick up an item.
+        - [x] `on_take` should print out "You have picked up [NAME]" when you pick up an item.
 
-        - [ ] The `Item` can use this to run additional code when it is picked up.
+        - [x] The `Item` can use this to run additional code when it is picked up.
 
-     - [ ] Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
+     - [x] Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
 
-- [ ] Implement support for the verb `drop` followed by an `Item` name. This is the
+- [x] Implement support for the verb `drop` followed by an `Item` name. This is the
   opposite of `get`/`take`.
 
 - [ ] Add the `i` and `inventory` commands that both show a list of items currently

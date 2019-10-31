@@ -6,3 +6,7 @@ class Item:
     #     pass
     def __repr__(self):
         return f"Item({self.name}, {self.description})"
+    def on_take(self):
+        return f"You have picked up {self.name}"
+    def on_drop(self):
+        return f"You have dropped {self.name}"
