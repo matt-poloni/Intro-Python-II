@@ -1,4 +1,5 @@
 from room import Room
+from item import Item, LightSource
 from player import Player
 from parse import cmds, parse
 
@@ -34,6 +35,9 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+# Place items in rooms
+room['outside'].list.append(LightSource("Lamp", "A source of light for any dark places you may find yourself."))
 
 #
 # Main

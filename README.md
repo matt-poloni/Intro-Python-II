@@ -126,11 +126,11 @@ In arbitrary order:
 
 - [ ] Subclass items into treasures
 
-- [ ] Add a subclass to `Item` called `LightSource`.
+- [x] Add a subclass to `Item` called `LightSource`.
 
-  - [ ] During world creation, add a `lamp` `LightSource` to a convenient `Room`.
+  - [x] During world creation, add a `lamp` `LightSource` to a convenient `Room`.
 
-  - [ ] Override `on_drop` in `LightSource` that tells the player "It's not wise to
+  - [x] Override `on_drop` in `LightSource` that tells the player "It's not wise to
   drop your source of light!" if the player drops it. (But still lets them drop
   it.)
 
@@ -189,11 +189,11 @@ In arbitrary order:
 
 - [ ] Add monsters.
 
-- [ ] Add the `attack` verb that allows you to specify a monster to attack.
+  - [ ] Add the `attack` verb that allows you to specify a monster to attack.
 
-- [ ] Add an `on_attack` method to the monster class.
+  - [ ] Add an `on_attack` method to the monster class.
 
-- [ ] Similar to the `on_take` return value modification, above, have `on_attack`
-  prevent the attack from succeeding unless the user possesses a `sword` item.
+  - [ ] Similar to the `on_take` return value modification, above, have `on_attack`
+    prevent the attack from succeeding unless the user possesses a `sword` item.
 
 - [ ] Come up with more stretch goals! The sky's the limit!

@@ -9,3 +9,20 @@ class Player:
         return f"{self.name}: {self.list}"
     def __repr__(self):
         return f"Player({repr(self.name)}, {repr(self.current_room)})"
+    def travel(self, cmd0, dirs):
+        d = cmd0[0]
+        dir = dirs[d]
+        if (to := getattr(self.current_room, f"{d}_to")) != None:
+            self.current_room = to
+        else:
+            print(f"ERROR: You cannot travel {dir}. Try again.")
+    def take_drop(self, cmd0, cmd1, rmv, ins):
+        for i in rmv:
+            if i.name.lower() == cmd1:
+                rmv.remove(i)
+                ins.append(i)
+                tkdp = "drop" if cmd0[0] == 'd' else "take"
+                getattr(i, f'on_{tkdp}')()
+                break
+        else:
+            print(f"ERROR: The item isn't there. Try again.")

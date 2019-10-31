@@ -36,31 +36,16 @@ def parse(cmd, p):
 
     # Directional commands
     if cmd0 in cmds["dirs"]:
-        d = cmd0[0]
-        dir = dirs[d]
-        if (to := getattr(p.current_room, f"{d}_to")) != None:
-            p.current_room = to
-        else:
-            print(f"ERROR: You cannot travel {dir}. Try again.")
+        p.travel(cmd0, dirs)
     # Inventory commands
     elif cmd0 in cmds["inv"]:
         pass
     # Item acquisition
     elif cmd0 in cmds["take"]:
-        if cmd1 in p.list:
-            p.current_room.list.append(cmd1)
-            p.list.remove(cmd1)
-            p.current_room.list[:-1].on_take()
-        else:
-            print(f"ERROR: There is no '{cmd1}' item in the room. Try again.")
+        p.take_drop(cmd0, cmd1, p.current_room.list, p.list)
     # Item deposit
     elif cmd0 in cmds["drop"]:
-        if cmd1 in p.current_room.list:
-            p.list.append(cmd1)
-            p.current_room.list.remove(cmd1)
-            p.list[:-1].on_drop()
-        else:
-            print(f"ERROR: You do not have any '{cmd1}' item. Try again.")
+        p.take_drop(cmd0, cmd1, p.list, p.current_room.list)
     # Unknown commands
     elif cmd0 not in cmds["quit"]:
         print(f"ERROR: '{cmd0}' is not a recognized command. Try again.")

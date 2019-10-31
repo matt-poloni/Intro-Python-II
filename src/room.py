@@ -10,6 +10,8 @@ class Room:
         self.e_to = None
         self.w_to = None
     def __str__(self):
-        return f"{self.name}: {self.description}\nItems: {self.list}"
+        sub = "\n> "
+        list = sub.join([i.name for i in self.list])
+        return f"{self.name}: {self.description}\nContents:{sub}{list}"
     def __repr__(self):
         return f"Room({repr(self.name)}, {repr(self.description)})"
