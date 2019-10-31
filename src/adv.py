@@ -49,8 +49,8 @@ name = input("What is your name? ")
 p = Player(name, room['outside'])
 
 cmd0 = ""
-while cmd0 not in ["q", "quit"]:
-    if cmd0 in ["i", "inv"]:
+while cmd0 != "q":
+    if cmd0 == "i":
         list = f"[{', '.join([i.name for i in p.list])}]"
         print(f"Inventory: {list}\n-------")
     else:

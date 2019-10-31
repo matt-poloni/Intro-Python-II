@@ -28,32 +28,40 @@ def parse(cmd, p):
 
     # Dictionary of user commands mapped to actions
     switch = {
-      **dict.fromkeys(
-        [*dirs.keys(), *dirs.values()],
-        lambda: p.travel(cmd0, dirs)
-      ),
-      **dict.fromkeys(
-        ["i", "inventory"],
-        lambda: None
-      ),
-      **dict.fromkeys(
-        ["g", "get", "t", "take"],
-        lambda: p.take_drop(cmd0, cmd1, p.current_room.list, p.list)
-      ),
-      **dict.fromkeys(
-        ["d", "drop"],
-        lambda: p.take_drop(cmd0, cmd1, p.list, p.current_room.list)
-      ),
-      **dict.fromkeys(
-        ["q", "quit"],
-        lambda: None
-      )
+        # Direction commands
+        **dict.fromkeys(
+            [*dirs.keys(), *dirs.values()],
+            lambda: p.travel(cmd0, dirs)
+        ),
+        # Inventory commands
+        **dict.fromkeys(
+            ["i", "inventory"],
+            lambda: None
+        ),
+        # Item acquisition commands
+        **dict.fromkeys(
+            ["g", "get", "t", "take"],
+            lambda: p.take_drop(cmd0, cmd1, p.current_room.list, p.list)
+        ),
+        # Item deposit commands
+        **dict.fromkeys(
+            ["d", "drop"],
+            lambda: p.take_drop(cmd0, cmd1, p.list, p.current_room.list)
+        ),
+        # Quitting commands
+        **dict.fromkeys(
+            ["q", "quit"],
+            lambda: None
+        )
     }
+    # print(switch.keys())
 
+    # Try to call relevant function for user command
     try:
         switch[cmd0]()
+    # Error out if user command isn't found
     except:
         print(f"ERROR: '{cmd0}' is not a recognized command. Try again.\n-------")
 
-    # Return first command for while loop
-    return cmd0
+    # Return first letter of primary command for while loop
+    return cmd0[0]
