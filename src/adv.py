@@ -38,6 +38,7 @@ room['treasure'].s_to = room['narrow']
 
 # Place items in rooms
 room['outside'].list.append(LightSource("Lamp", "A source of light for any dark places you may find yourself."))
+room['foyer'].list.append(Item("Wallet", "A place to store money."))
 
 #
 # Main
@@ -49,10 +50,14 @@ p = Player(name, room['outside'])
 
 cmd0 = ""
 while cmd0 not in cmds["quit"]:
-    # Print current room & description
-    print(f"\n{p.current_room}\n")
+    if cmd0 in cmds["inv"]:
+        list = f"[{', '.join([i.name for i in p.list])}]"
+        print(f"Inventory: {list}\n-------")
+    else:
+        # Print current room & description
+        print(f"\n{p.current_room}\n-------")
 
     # Take command from user
     cmd = input("Command: ")
     # Update primary command and current room
-    cmd0, p = parse(cmd, p)
+    cmd0 = parse(cmd, p)

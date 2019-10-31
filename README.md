@@ -26,7 +26,7 @@ Up to this point, you've gotten your feet wet by working on a bunch of small Pyt
 
 - [x] Make rooms able to hold multiple items
 - [x] Make the player able to carry multiple items
-- [ ] Add items to the game that the user can carry around
+- [x] Add items to the game that the user can carry around
 - [x] Add `get [ITEM_NAME]` and `drop [ITEM_NAME]` commands to the parser
 
 ## Specification
@@ -112,7 +112,7 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
 - [x] Implement support for the verb `drop` followed by an `Item` name. This is the
   opposite of `get`/`take`.
 
-- [ ] Add the `i` and `inventory` commands that both show a list of items currently
+- [x] Add the `i` and `inventory` commands that both show a list of items currently
   carried by the player.
 
 

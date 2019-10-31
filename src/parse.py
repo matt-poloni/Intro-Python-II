@@ -39,16 +39,19 @@ def parse(cmd, p):
         p.travel(cmd0, dirs)
     # Inventory commands
     elif cmd0 in cmds["inv"]:
-        pass
+        pass # Handled at top of while loop
     # Item acquisition
     elif cmd0 in cmds["take"]:
         p.take_drop(cmd0, cmd1, p.current_room.list, p.list)
     # Item deposit
     elif cmd0 in cmds["drop"]:
         p.take_drop(cmd0, cmd1, p.list, p.current_room.list)
+    # Quit commands
+    elif cmd0 in cmds["quit"]:
+        pass # Breaks out of while loop
     # Unknown commands
-    elif cmd0 not in cmds["quit"]:
-        print(f"ERROR: '{cmd0}' is not a recognized command. Try again.")
+    else:
+        print(f"ERROR: '{cmd0}' is not a recognized command. Try again.\n-------")
 
     # Return first command for while loop
-    return (cmd0, p)
+    return cmd0

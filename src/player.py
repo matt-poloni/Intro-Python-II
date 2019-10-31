@@ -14,6 +14,7 @@ class Player:
         dir = dirs[d]
         if (to := getattr(self.current_room, f"{d}_to")) != None:
             self.current_room = to
+            print(f"Traveling {dir} to {to.name}...\n==============")
         else:
             print(f"ERROR: You cannot travel {dir}. Try again.")
     def take_drop(self, cmd0, cmd1, rmv, ins):
@@ -22,7 +23,8 @@ class Player:
                 rmv.remove(i)
                 ins.append(i)
                 tkdp = "drop" if cmd0[0] == 'd' else "take"
-                getattr(i, f'on_{tkdp}')()
+                msg = getattr(i, f"on_{tkdp}")()
+                print(msg)
                 break
         else:
-            print(f"ERROR: The item isn't there. Try again.")
+            print(f"ERROR: '{cmd1}' isn't there. Try again.")

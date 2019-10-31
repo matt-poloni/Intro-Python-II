@@ -7,9 +7,9 @@ class Item:
     def __repr__(self):
         return f"Item({repr(self.name)}, {repr(self.description)})"
     def on_take(self):
-        return f"You have picked up {self.name}"
+        return f"You have picked up {self.name}\n-------"
     def on_drop(self):
-        return f"You have dropped {self.name}"
+        return f"You have dropped {self.name}\n-------"
 
 class LightSource(Item):
     def __init__(self, name, description):
@@ -20,4 +20,4 @@ class LightSource(Item):
         return f"LightSource({repr(self.name)}, {repr(self.description)})"
     def on_drop(self):
         print("It's not wise to drop your source of light!")
-        super().on_drop()
+        return super().on_drop()
