@@ -5,14 +5,6 @@ dirs = {
   'e': 'east',
   'w': 'west'
 }
-# Dictionary of user commands
-cmds = {
-  "dirs": [*dirs.keys(), *dirs.values()],
-  "inv": ["i", "inventory"],
-  "take": ["g", "get", "t", "take"],
-  "drop": ["d", "drop"],
-  "quit": ["q", "quit"]
-}
 
 # Write a loop that:
 #
@@ -34,23 +26,34 @@ def parse(cmd, p):
     except:
         cmd1 = "*"
 
-    # Directional commands
-    if cmd0 in cmds["dirs"]:
-        p.travel(cmd0, dirs)
-    # Inventory commands
-    elif cmd0 in cmds["inv"]:
-        pass # Handled at top of while loop
-    # Item acquisition
-    elif cmd0 in cmds["take"]:
-        p.take_drop(cmd0, cmd1, p.current_room.list, p.list)
-    # Item deposit
-    elif cmd0 in cmds["drop"]:
-        p.take_drop(cmd0, cmd1, p.list, p.current_room.list)
-    # Quit commands
-    elif cmd0 in cmds["quit"]:
-        pass # Breaks out of while loop
-    # Unknown commands
-    else:
+    # Dictionary of user commands mapped to actions
+    dir_kv = [*dirs.keys(), *dirs.values()]
+    switch = {
+      **dict.fromkeys(
+        dir_kv,
+        lambda: p.travel(cmd0, dirs)
+      ),
+      **dict.fromkeys(
+        ["i", "inventory"],
+        lambda: None
+      ),
+      **dict.fromkeys(
+        ["g", "get", "t", "take"],
+        lambda: p.take_drop(cmd0, cmd1, p.current_room.list, p.list)
+      ),
+      **dict.fromkeys(
+        ["d", "drop"],
+        lambda: p.take_drop(cmd0, cmd1, p.list, p.current_room.list)
+      ),
+      **dict.fromkeys(
+        ["q", "quit"],
+        lambda: None
+      )
+    }
+
+    try:
+        switch[cmd0]()
+    except:
         print(f"ERROR: '{cmd0}' is not a recognized command. Try again.\n-------")
 
     # Return first command for while loop

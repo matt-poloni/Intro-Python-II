@@ -1,7 +1,7 @@
 from room import Room
 from item import Item, LightSource
 from player import Player
-from parse import cmds, parse
+from parse import parse
 
 # Declare all the rooms
 
@@ -49,8 +49,8 @@ name = input("What is your name? ")
 p = Player(name, room['outside'])
 
 cmd0 = ""
-while cmd0 not in cmds["quit"]:
-    if cmd0 in cmds["inv"]:
+while cmd0 not in ["q", "quit"]:
+    if cmd0 in ["i", "inv"]:
         list = f"[{', '.join([i.name for i in p.list])}]"
         print(f"Inventory: {list}\n-------")
     else:
