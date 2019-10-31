@@ -61,3 +61,5 @@ while cmd0 not in cmds["quit"]:
     cmd = input("Command: ")
     # Update primary command and current room
     cmd0 = parse(cmd, p)
+
+print(f"\nThanks for playing, {p.name}!\n==============")
