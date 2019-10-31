@@ -27,10 +27,9 @@ def parse(cmd, p):
         cmd1 = "*"
 
     # Dictionary of user commands mapped to actions
-    dir_kv = [*dirs.keys(), *dirs.values()]
     switch = {
       **dict.fromkeys(
-        dir_kv,
+        [*dirs.keys(), *dirs.values()],
         lambda: p.travel(cmd0, dirs)
       ),
       **dict.fromkeys(
